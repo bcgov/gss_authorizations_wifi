@@ -542,3 +542,221 @@ main {
 .repo-card {
   animation: fadeInUp 0.3s ease both;
 }
+
+/* ── Dark-mode toggle button ─────────────────────────────── */
+.dark-mode-toggle {
+  margin-left: auto;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: rgba(255,255,255,0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), border-color var(--transition), transform 0.15s ease;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: var(--bcgov-gold-light);
+  transform: scale(1.1);
+}
+
+/* Show sun by default (click to go dark), hide moon */
+.icon-moon { display: none; }
+.icon-sun  { display: block; }
+
+/* ── Dark-mode theme ─────────────────────────────────────── */
+html.dark .icon-sun  { display: none; }
+html.dark .icon-moon { display: block; }
+
+html.dark {
+  --bg-page:       #111827;
+  --bg-card:       #1f2937;
+  --bg-header:     #0f172a;
+  --bg-footer:     #0b1120;
+  --text-primary:  #e5e7eb;
+  --text-secondary:#9ca3af;
+  --text-light:    #6b7280;
+  --card-shadow:   0 2px 8px rgba(0,0,0,0.30), 0 1px 3px rgba(0,0,0,0.20);
+  --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.20);
+}
+
+html.dark body {
+  color-scheme: dark;
+}
+
+html.dark .nav-bar {
+  background: #162033;
+}
+
+html.dark .search-bar {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+html.dark .search-bar:focus {
+  border-color: var(--bcgov-gold);
+  box-shadow: 0 0 0 3px rgba(227,168,43,0.20);
+}
+
+html.dark .repo-card {
+  border-color: #374151;
+}
+
+html.dark .card-footer {
+  background: #172033;
+  border-top-color: #2d3748;
+}
+
+html.dark .card-link {
+  color: var(--bcgov-gold-light);
+  border-color: var(--bcgov-gold-light);
+}
+
+html.dark .card-link:hover,
+html.dark .card-link:focus {
+  background: var(--bcgov-gold);
+  color: #111;
+}
+
+html.dark .card-icon {
+  background: rgba(227,168,43,0.12);
+  color: var(--bcgov-gold-light);
+}
+
+html.dark .card-name {
+  color: #e5e7eb;
+}
+
+html.dark .section-heading h2 {
+  color: var(--bcgov-gold-light);
+}
+
+html.dark .header-logo {
+  background: rgba(255,255,255,0.95);
+}
+
+html.dark .footer-logo {
+  background: rgba(255,255,255,0.92);
+}
+
+html.dark .hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(15,23,42,0.10) 0%,
+    rgba(15,23,42,0.55) 60%,
+    rgba(11,17,32,0.88) 100%
+  );
+}
+
+/* ── Confetti ────────────────────────────────────────────── */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ── Easter-egg modal ────────────────────────────────────── */
+.egg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.egg-overlay.visible { opacity: 1; }
+
+.egg-modal {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.30);
+  max-width: 420px;
+  width: 90%;
+  padding: 2rem;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.egg-overlay.visible .egg-modal {
+  transform: scale(1);
+}
+
+.egg-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.egg-badge {
+  background: var(--bcgov-gold);
+  color: var(--text-on-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+}
+
+.egg-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bcgov-blue);
+}
+
+html.dark .egg-title {
+  color: var(--bcgov-gold-light);
+}
+
+.egg-fact {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.egg-close {
+  background: var(--bcgov-blue);
+  color: #fff;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 2rem;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.15s ease;
+}
+
+.egg-close:hover {
+  background: var(--bcgov-gold);
+  color: var(--text-on-gold);
+  transform: scale(1.05);
+}

@@ -43,6 +43,14 @@
       <a href="#repositories" class="nav-link active">Repositories</a>
       <a href="https://www2.gov.bc.ca/gov/content/industry/natural-resource-use/natural-resource-permits" class="nav-link" target="_blank" rel="noopener noreferrer">Program Info</a>
       <a href="https://github.com/bcgov" class="nav-link" target="_blank" rel="noopener noreferrer">BCGov on GitHub</a>
+      <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -239,6 +247,105 @@
       );
       renderCards(filtered);
     });
+
+    /* ===================================================
+       Dark-mode toggle
+    ==================================================== */
+    (function () {
+      const toggle = document.getElementById('dark-mode-toggle');
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') document.documentElement.classList.add('dark');
+
+      toggle.addEventListener('click', function () {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    })();
+
+    /* ===================================================
+       #askwifi Easter Egg  —  type it anywhere on the page
+    ==================================================== */
+    (function () {
+      const SECRET = '#askwifi';
+      let buffer = '';
+
+      const WILDLIFE_FACTS = [
+        '🐻 BC is home to roughly 15,000 grizzly bears — about 25% of the North American population!',
+        '🦅 The bald eagle population in BC is estimated at 20,000+ pairs, one of the largest concentrations in the world.',
+        '🐟 The Fraser River is the most productive salmon river in Canada, supporting all 5 Pacific salmon species.',
+        '🦌 BC has more than 170,000 mule deer and over 75,000 white-tailed deer.',
+        '🐺 BC\'s wolf population is estimated at 8,500 — the largest in Canada.',
+        '🦉 The Northern Spotted Owl is one of BC\'s most endangered species, with fewer than 10 remaining in the wild.',
+        '🐋 Over 200 humpback whales have been identified in BC\'s coastal waters.',
+        '🦫 Beavers are ecosystem engineers — a single family can create up to 6 hectares of wetland habitat!',
+        '🐸 The Great Basin Spadefoot Toad can survive underground for months, waiting for rain to breed.',
+        '🏔️ BC contains nearly 60% of Canada\'s total biodiversity — the richest province by far!'
+      ];
+
+      function launchConfetti() {
+        const container = document.createElement('div');
+        container.className = 'confetti-container';
+        document.body.appendChild(container);
+
+        const colors = ['#E3A82B', '#234075', '#38598a', '#f5c34e', '#fff', '#3572A5', '#89e051'];
+        for (let i = 0; i < 120; i++) {
+          const piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.animationDelay = Math.random() * 1.2 + 's';
+          piece.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+          piece.style.width = (6 + Math.random() * 6) + 'px';
+          piece.style.height = (4 + Math.random() * 8) + 'px';
+          piece.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+          container.appendChild(piece);
+        }
+
+        setTimeout(function () { container.remove(); }, 4000);
+      }
+
+      function showFactModal() {
+        const fact = WILDLIFE_FACTS[Math.floor(Math.random() * WILDLIFE_FACTS.length)];
+
+        const overlay = document.createElement('div');
+        overlay.className = 'egg-overlay';
+
+        overlay.innerHTML =
+          '<div class="egg-modal">' +
+            '<div class="egg-modal-header">' +
+              '<span class="egg-badge">#askwifi</span>' +
+              '<span class="egg-title">BC Wildlife Fun Fact</span>' +
+            '</div>' +
+            '<p class="egg-fact">' + fact + '</p>' +
+            '<button class="egg-close">Nice!</button>' +
+          '</div>';
+
+        document.body.appendChild(overlay);
+        requestAnimationFrame(function () { overlay.classList.add('visible'); });
+
+        function close() {
+          overlay.classList.remove('visible');
+          setTimeout(function () { overlay.remove(); }, 300);
+        }
+
+        overlay.querySelector('.egg-close').addEventListener('click', close);
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) close();
+        });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        buffer += e.key.toLowerCase();
+        if (buffer.length > SECRET.length) buffer = buffer.slice(-SECRET.length);
+        if (buffer === SECRET) {
+          buffer = '';
+          launchConfetti();
+          setTimeout(showFactModal, 400);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
