@@ -73,5 +73,25 @@ const repos = [
     description: "An Arcpro Script that automatically creates an exhibit A instead of SNCS",
     url: "https://github.com/cjsostad/Auto_Exhibit_A_Toolbox",
     language: "Python"
-  }
+  },
+              {
+    name: "AST Batch Tool",
+    description: "A tool used to run the Automated Status Tool in batches",
+    url: "https://github.com/cjsostad/ast_batch_tool",
+    language: "Python"
+  },
+                {
+    name: "KFN Water Pilot",
+    description: "A tool to updated Folium maps and tables for the KFN Water Pilot project",
+    url: "https://github.com/cjsostad/kfn_water_pilot",
+    language: "Python"
+  },
+                  {
+    name: "Arcpro Replacements Toolbox",
+    description: "This tool automates the production of maps for replacement authorizations in ArcGIS Pro.",
+    url: "https://github.com/cjsostad/ReplacementsToolbox",
+    language: "Python"
+  },
+
+
 ];
