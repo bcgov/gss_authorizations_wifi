@@ -43,5 +43,35 @@ const repos = [
     description: "The union based CHA script still in progress",
     url: "https://github.com/cjsostad/CHA_Script",
     language: "Python"
+  },
+    {
+    name: "Knowlede Share Snippets",
+    description: "Little snippets of code shared in knowledge share sessions that can be useful in everyday scripting",
+    url: "https://github.com/cjsostad/Knowledge_Share_snippets_modules",
+    language: "Python"
+  },
+      {
+    name: "PWHL Hockey Pool Spreadsheet Updater",
+    description: "A script to update the PWHL hockey pool spreadsheet automatically.",
+    url: "https://github.com/cjsostad/Hockey-Pool",
+    language: "Python"
+  },
+        {
+    name: "PWHL Hockey Pool Spreadsheet Updater",
+    description: "A script to update the PWHL hockey pool spreadsheet automatically.",
+    url: "https://github.com/cjsostad/Hockey-Pool",
+    language: "Python"
+  },
+          {
+    name: "Arcpro Water Plat Mapping Script",
+    description: "A script to map water plats in ArcGIS Pro.",
+    url: "https://github.com/cjsostad/WaterToolbox",
+    language: "Python"
+  },
+            {
+    name: "Auto Exhibit A Script",
+    description: "An Arcpro Script that automatically creates an exhibit A instead of SNCS",
+    url: "https://github.com/cjsostad/Auto_Exhibit_A_Toolbox",
+    language: "Python"
   }
 ];
