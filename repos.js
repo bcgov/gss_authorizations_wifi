@@ -92,6 +92,18 @@ const repos = [
     url: "https://github.com/cjsostad/ReplacementsToolbox",
     language: "Python"
   },
+                    {
+    name: "Nightly Tantalis Pulls",
+    description: "A tool to automate nightly pulls from Tantalis.",
+    url: "https://github.com/cjsostad/nightly_tantalis_pulls",
+    language: "Python"
+  },
+            {
+    name: "Save and Excepts",
+    description: "Proof of concept script to analyze conflicts in a dataset",
+    url: "https://github.com/cjsostad/Save-and-Excepts",
+    language: "Python"
+  }
 
 
 ];
