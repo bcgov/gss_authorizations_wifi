@@ -25,6 +25,26 @@
   font-display: swap;
 }
 
+/* ── Easter-egg hint ───────────────────────────────────────── */
+.easter-egg-hint {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+}
+.easter-egg-hint:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+.easter-egg-hint kbd {
+  font-family: var(--font-main);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+}
+
 /* ── Design Tokens ─────────────────────────────────────────── */
 :root {
   --bcgov-blue:        #234075;

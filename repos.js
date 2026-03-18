@@ -26,6 +26,12 @@
  */
 
 const repos = [
+    {
+    name: "ArcPro Toolbox Template",
+    description: "A template for creating ArcGIS Pro Toolboxes with Python scripts.",
+    url: "https://github.com/cjsostad/ArcPro-Toolbox-Template",
+    language: "Python"
+  },
   {
     name: "Traplines Mapping Script",
     description: "An Arcgis Pro Toolbox that contains a script for creating trapline maps for the Wildlife and Fisheries Authorizations team.",
