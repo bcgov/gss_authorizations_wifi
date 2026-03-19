@@ -27,6 +27,12 @@
 
 const repos = [
     {
+    name: "Slrp Ogma Gar DRM Script Upgrade",
+    description: "Updating the SLRP, OGMA, GAR scripts used by the Editor and DRM to Arcpro and python3",
+    url: "https://github.com/cjsostad/slrp_ogma_scripts",
+    language: "Python"
+  },
+    {
     name: "ArcPro Toolbox Template",
     description: "A template for creating ArcGIS Pro Toolboxes with Python scripts.",
     url: "https://github.com/cjsostad/ArcPro-Toolbox-Template",
