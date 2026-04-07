@@ -29,7 +29,7 @@ const repos = [
     {
     name: "Slrp Ogma Gar DRM Script Upgrade",
     description: "Updating the SLRP, OGMA, GAR scripts used by the Editor and DRM to Arcpro and python3",
-    url: "https://github.com/cjsostad/slrp_ogma_scripts",
+    url: "https://github.com/bcgov/slrp_ogma_wha_arcgis_pro_toolbox",
     language: "Python"
   },
     {
